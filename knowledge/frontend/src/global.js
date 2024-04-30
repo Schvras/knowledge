@@ -14,4 +14,4 @@ export function showError(e){
     }
 }
 
-export default { baseApiUrl, showError, userKey, menuVisibleKey }
+export default { baseApiUrl, showError, userKey }

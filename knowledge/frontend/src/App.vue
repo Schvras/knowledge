@@ -12,7 +12,7 @@
 
 <script>
 import axios from 'axios'
-import { baseApiUrl, userKey, menuVisibleKey } from '@/global'
+import { baseApiUrl, userKey } from '@/global'
 import { mapState } from 'vuex'
 import Header from '@/components/template/Header'
 import Menu from '@/components/template/Menu'
