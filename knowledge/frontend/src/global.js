@@ -1,6 +1,5 @@
 import Vue from 'vue'
 
-export const menuVisibleKey = '__knowledge_menu_visible'
 export const userKey = '__knowledge_user'
 export const baseApiUrl = 'http://192.168.1.7:3000'
 
