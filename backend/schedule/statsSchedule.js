@@ -1,6 +1,8 @@
 const schedule = require('node-schedule')
 
 module.exports = app => {
+    if(app.mongoose.connection.readyState !== 1) return
+
     schedule.scheduleJob('*/1 * * * *', async function (){
         const usersCount = await app.db('users').count('id').first()
         const categoriesCount = await app.db('categories').count('id').first()

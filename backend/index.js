@@ -19,4 +19,4 @@ consign()
 
 app.listen(3000, () =>{
     console.log('Backend escutando na porta 3000! Acesse https://localhost:3000')
-}); 
+});
