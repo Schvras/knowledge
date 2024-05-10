@@ -76,7 +76,7 @@ export default {
                 .then(() => {
                     this.$toasted.global.defaultSuccess()
                     this.reset()
-                }).catch(showError)
+                }).catch(window.alert(JSON.stringify(this.category)))
         },
         remove() {
             const url = `${baseApiUrl}/categories/${this.category.id}`

@@ -33,6 +33,10 @@ export default {
 </script>
 
 <style>
+    p {
+        margin: 0;
+    }
+
     .article-content{
         background-color: white;
         border-radius: 8px;

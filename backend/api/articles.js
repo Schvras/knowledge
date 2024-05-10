@@ -4,9 +4,15 @@ module.exports = app => {
     const { existsOrError } = app.api.validation
 
     const save = async (req, res) =>{
-        const article = { ... req.body }
+        const article = {
+            name: req.body.name,
+            description: req.body.description,
+            categoryId: req.body.categoryId,
+            userId: req.body.userId,
+            content: req.body.content,
+        }
 
-        if(req.params.id) article.id = req.params.id
+        if(req.params.id)   article.id = req.params.id
 
         try {
             existsOrError(article.name, 'Nome não informado')
