@@ -4,15 +4,17 @@ module.exports = app => {
     const { existsOrError } = app.api.validation
 
     const save = async (req, res) =>{
+
         const article = {
             name: req.body.name,
             description: req.body.description,
-            categoryId: req.body.categoryId,
+            imageUrl: req.body.imageUrl,
             userId: req.body.userId,
-            content: req.body.content,
+            categoryId: req.body.categoryId,
+            content: Buffer.from( req.body.content ),
         }
 
-        if(req.params.id)   article.id = req.params.id
+        if(req.params.id) article.id = req.params.id
 
         try {
             existsOrError(article.name, 'Nome não informado')
@@ -21,7 +23,7 @@ module.exports = app => {
             existsOrError(article.userId, 'Autor não informado')
             existsOrError(article.content, 'Conteúdo não informado')
         } catch (msg) {
-            res.status(400).send(msg)
+            return res.status(400).send(msg)
         }
 
         if(article.id){
@@ -29,8 +31,9 @@ module.exports = app => {
                 .update(article)
                 .where({ id: article.id })
                 .then(_ => res.status(204).send())
-                .catch(err => res.status(500).send(err))
+                .catch(err => console.log(err) && res.status(500).send(err))
         } else {
+            console.log(article)
             app.db('articles')
                 .insert(article)
                 .then(_ => res.status(204).send())
@@ -49,7 +52,7 @@ module.exports = app => {
 
             res.status(204).send()
         } catch (msg) {
-            res.status(400).send(msg)
+            return res.status(400).send(msg)
         }
     }
 

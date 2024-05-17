@@ -1,4 +1,5 @@
 const admin = require('./admin')
+const multer = require('multer')({ dest: './archives/' });
 
 module.exports = app => {
     app.post('/signup', app.api.user.save)
@@ -46,6 +47,17 @@ module.exports = app => {
     app.route('/categories/:id/articles')
         .all(app.config.passport.authenticate())
         .get(app.api.articles.getByCategory)
+
+    app.route('/archives')
+        .all(app.config.passport.authenticate())
+        .post(multer.array('file'), admin(app.api.archives.save))
+        .post(admin(app.api.archives.remove))
+        .get(admin(app.api.archives.get))
+
+    app.route('/archives/:filename')
+        .all(app.config.passport.authenticate())
+        .post(admin(app.api.archives.remove))
+        .get(app.api.archives.download)
 
     app.route('/stats')
         .all(app.config.passport.authenticate())

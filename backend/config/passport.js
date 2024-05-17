@@ -20,6 +20,7 @@ module.exports = app => {
     passport.use(strategy)
 
     return {
+        user: passport,
         authenticate: () => passport.authenticate('jwt', {session: false})
     }
 }

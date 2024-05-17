@@ -41,6 +41,7 @@ export default {
                     localStorage.setItem(userKey, JSON.stringify(res.data))
                     this.$router.push({ path: '/'})
                 }).catch(e => {
+                    console.log(e)
                     showError(e)
                 })
         },

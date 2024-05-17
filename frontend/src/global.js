@@ -1,7 +1,8 @@
 import Vue from 'vue'
 
+export const menuVisibleKey = '__knowledge_menu_visible'
 export const userKey = '__knowledge_user'
-export const baseApiUrl = 'http://192.168.0.43:3000'
+export const baseApiUrl = 'http://localhost:3000'
 
 export function showError(e){
     if(e && e.response && e.response.data){
@@ -13,4 +14,4 @@ export function showError(e){
     }
 }
 
-export default { baseApiUrl, showError, userKey }
+export default { baseApiUrl, showError, menuVisibleKey, userKey }

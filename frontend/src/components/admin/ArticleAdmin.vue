@@ -53,10 +53,10 @@
 </template>
 
 <script>
-import 'highlightjs/styles/dracula.css'
+import 'highlightjs/styles/magula.css'
 import hljs from 'highlightjs/highlight.pack'
-import { VueEditor } from 'vue2-editor'
 import { baseApiUrl, showError } from '@/global'
+import { VueEditor } from 'vue2-editor'
 import axios from 'axios'
 
 export default {
@@ -131,7 +131,7 @@ export default {
                     this.$toasted.global.defaultSuccess()
                     this.reset()
                 })
-                .catch(e => showError(e))
+                .catch(showError)
         },
         remove() {
             axios.delete(`${baseApiUrl}/articles/${this.article.id}`,this.article)
